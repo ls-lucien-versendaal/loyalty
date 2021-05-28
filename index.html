@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lightspeed L-series test client</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+  </head>
+  <style>
+    .btn { margin: 0 10px 10px 0;  }
+  </style>
+  <body>
+    <div class="container">
+      <div class="row" style="padding-top: 30px;"><h1>Lightspeed L-Series test client</h1></div>
+
+        <div class="row">
+        <h2>PMS interface</h2>
+        <p>
+          Add this url as a PMS interface through the <a href="https://developers.lightspeedhq.com/resto-api/endpoints/corecompany/" >Company Endpoint</a> and
+          you should be able to search by room (ex: 101) or Marvel character (ex: Peter Parker) to try and assign a restaurant receipt to a room. Details on the
+          rooms and their occupants can be found at <a href="/room">this url</a>.
+        </p>
+        </div>
+        <div class="row">
+        <h2>Loyalty interface</h2>
+        <p>
+          Contact API Support or a Partner Manager in order to assign this Loyalty url to your test account. Once set, hitting the Loyalty button will open up this page and you can start testing the various functionality below.
+        </p>
+        <div class="col-12"><h5>The below buttons will <strong>not work</strong> if you accessed this site from outside the App.</h5></div>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.getReceipt(helloFunc, failureHandler)">Display Receipt Details</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addProduct(169951)">Add a small Heineken</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addFreeProduct(169951)">Add a small Heineken for Free</button><br />
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addProductDiscount(169951, 169947)">Add a small Heineken for 10% off</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.purchaseGiftCard(10)">Purchase a Gift Card for €10</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.useGiftCard(10)">Use a Gift Card of €10 value</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.redeemPointsForValue(10)">Redeem Points for €10 worth</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.close()">Close Interface</button>
+        </div>
+        <div class="messages">
+
+        </div>
+
+        <script>
+        var successMessage = "";
+        function helloFunc(message) {
+          alert(JSON.stringify(arguments));
+          message;
+        }
+
+        $(document).ready(function(){
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var receipt = url.searchParams.get("receipt");
+
+        $('.messages').html("Receipt Parameter (if present): " + receipt);
+        console.log(decodeURI(receipt));
+        });
+        </script>
+
+    </div>
+  </body>
+</html>
