@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Lightspeed L-series test client Lucien2.0</title>
+    <title>Lightspeed L-series test client</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -18,7 +18,7 @@
   </style>
   <body>
     <div class="container">
-      <div class="row" style="padding-top: 30px;"><h1>Lightspeed L-Series test client Lucien updated</h1></div>
+      <div class="row" style="padding-top: 30px;"><h1>Lightspeed L-Series test client Lucien </h1></div>
 
         <div class="row">
         <h2>PMS interface</h2>
@@ -35,13 +35,12 @@
         </p>
         <div class="col-12"><h5>The below buttons will <strong>not work</strong> if you accessed this site from outside the App.</h5></div>
         <button type="button" class="btn btn-primary" onClick="LSLoyalty.getReceipt(helloFunc, failureHandler)">Display Receipt Details</button>
-        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addProduct(161688)">Add a Campari</button>
-        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addProduct(161687)">Add a Aperitif maison</button>
-        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addFreeProduct('A5')">Add a Coke for Free</button><br />
-        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addProductDiscount('D3', 'A4', helloFunc, failureHandler)">Add a Affligem Blond for 10% off</button>
-          
-<!--         <button type="button" class="btn btn-primary" onClick="LSLoyalty.purchaseGiftCard(10)">Purchase a Gift Card for €10</button>
-        <button type="button" class="btn btn-primary" onClick="LSLoyalty.useGiftCard(10)">Use a Gift Card of €10 value</button> -->
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addProduct(163096)">Add a Affligem Blond</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addProduct(161714)">Add a €5 DISCOUNT</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addFreeProduct(166842)">Add a Coka Cola for Free</button><br />
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addProductDiscount(166845, 163096)">Add a Affligem Blond for 10% off</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.purchaseGiftCard(10)">Purchase a Gift Card for €10</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.useGiftCard(10)">Use a Gift Card of €10 value</button>
         <button type="button" class="btn btn-primary" onClick="LSLoyalty.redeemPointsForValue(10)">Redeem Points for €10 worth</button>
         <button type="button" class="btn btn-primary" onClick="LSLoyalty.close()">Close Interface</button>
         </div>
@@ -50,14 +49,6 @@
         </div>
 
         <script>
-          
-          function success(){
-            alert("Success")
-          }
-          
-           function failure(){
-            alert("Failed")
-          }
         var successMessage = "";
         function helloFunc(message) {
           alert(JSON.stringify(arguments));
