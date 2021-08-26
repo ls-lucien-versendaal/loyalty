@@ -18,7 +18,7 @@
   </style>
   <body>
     <div class="container">
-      <div class="row" style="padding-top: 30px;"><h1>Lightspeed L-Series test client Lucien </h1></div>
+      <div class="row" style="padding-top: 30px;"><h1>Lightspeed L-Series test client Lucien new functions</h1></div>
 
         <div class="row">
         <h2>PMS interface</h2>
@@ -42,6 +42,8 @@
         <button type="button" class="btn btn-primary" onClick="LSLoyalty.purchaseGiftCard(10)">Purchase a Gift Card for €10</button>
         <button type="button" class="btn btn-primary" onClick="LSLoyalty.useGiftCard(10)">Use a Gift Card of €10 value</button>
         <button type="button" class="btn btn-primary" onClick="LSLoyalty.redeemPointsForValue(10)">Redeem Points for €10 worth</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addReceiptDiscount(161714, helloFunc, failureHandler)">Discount on the receipt total €5</button>
+        <button type="button" class="btn btn-primary" onClick="LSLoyalty.addDiscountedProduct(163096, 163093, helloFunc, failureHandler)">5 % Discount on affligem blond</button>
         <button type="button" class="btn btn-primary" onClick="LSLoyalty.close()">Close Interface</button>
         </div>
         <div class="messages">
