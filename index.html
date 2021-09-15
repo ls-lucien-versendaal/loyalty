@@ -19,7 +19,7 @@
   </style>
   <body>
     <div class="container">
-      <div class="row" style="padding-top: 30px;"><h1>Lightspeed L-Series test client Lucien new functions</h1></div>
+      <div class="row" style="padding-top: 30px;"><h1>Lightspeed L-Series test client Lucien Camera</h1></div>
 
         <div class="row">
         <h2>PMS interface</h2>
@@ -51,54 +51,23 @@
 
         </div>
       
-        <div id="reader"></div>
+       <div style="width: 500px" id="reader"></div>
 
         <script>
           
-          
-        Html5Qrcode.getCameras().then(devices => {
-        /**
-         * devices would be an array of objects of type:
-         * { id: "id", label: "label" }
-         */
-        if (devices && devices.length) {
-          var cameraId = devices[0].id;
-          // .. use this to start scanning.
-        }
-      }).catch(err => {
-        // handle err
-      });
-          
-          // Create instance of the object. The only argument is the "id" of HTML element created above.
-const html5QrCode = new Html5Qrcode("reader");
+      var html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader", { fps: 10, qrbox: 250 });
+        
+function onScanSuccess(decodedText, decodedResult) {
+    // Handle on success condition with the decoded text or result.
+    console.log(`Scan result: ${decodedText}`, decodedResult);
+    // ...
+    html5QrcodeScanner.clear();
+    // ^ this will stop the scanner (video feed) and clear the scan area.
+}
 
-html5QrCode.start(
-  cameraId,     // retreived in the previous step.
-  {
-    fps: 10,    // sets the framerate to 10 frame per second
-    qrbox: 250  // sets only 250 X 250 region of viewfinder to
-                // scannable, rest shaded.
-  },
-  qrCodeMessage => {
-    // do something when code is read. For example:
-    console.log(`QR Code detected: ${qrCodeMessage}`);
-  },
-  errorMessage => {
-    // parse error, ideally ignore it. For example:
-    console.log(`QR Code no longer in front of camera.`);
-  })
-.catch(err => {
-  // Start failed, handle it. For example,
-  console.log(`Unable to start scanning, error: ${err}`);
-});
+html5QrcodeScanner.render(onScanSuccess);
           
-html5QrCode.stop().then(ignore => {
-  // QR Code scanning is stopped.
-  console.log("QR Code scanning stopped.");
-}).catch(err => {
-  // Stop failed, handle it.
-  console.log("Unable to stop scanning.");
-});
           
         var successMessage = "";
         function helloFunc(message) {
